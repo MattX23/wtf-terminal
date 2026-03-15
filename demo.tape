@@ -3,44 +3,47 @@ Output demo.gif
 Set Shell "zsh"
 Set FontSize 14
 Set Width 720
-Set Height 340
+Set Height 360
 Set Theme "Catppuccin Mocha"
 Set Padding 20
 Set TypingSpeed 80ms
 Set PlaybackSpeed 0.9
 
-# Bootstrap: source the plugin and set a real API key for the demo
 Hide
-Type "source '/Users/mattnorthwood/Claude Playground/wtf-terminal/wtf.zsh'"
+Type "PS1='➜  '"
+Enter
+Sleep 200ms
+Type "source ./demo_env.zsh"
+Enter
+Sleep 300ms
+Type "clear"
 Enter
 Sleep 300ms
 Show
 
-# --- Scene 1: a failing npm command ---
-Sleep 500ms
-Type "npm install"
-Sleep 200ms
-Enter
-Sleep 3s
+Sleep 700ms
 
-# --- Scene 2: type wtf and get the explanation ---
+# Scene 1: npm install fails
+Type "npm install"
+Enter
+Sleep 1200ms
+
+# Scene 2: wtf explains it
 Sleep 400ms
 Type "wtf"
-Sleep 200ms
 Enter
-Sleep 7s
+Sleep 4200ms
 
-# --- Scene 3: show the why alias too ---
-Sleep 1s
-Type "cat /etc/shadow"
-Sleep 200ms
+# Scene 3: git push fails
+Sleep 600ms
+Type "git push origin my-feature"
 Enter
-Sleep 2s
+Sleep 1200ms
 
+# Scene 4: why (alias) explains it
 Sleep 400ms
 Type "why"
-Sleep 200ms
 Enter
-Sleep 7s
+Sleep 4800ms
 
-Sleep 2s
+Sleep 1500ms
