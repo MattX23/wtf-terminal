@@ -133,12 +133,35 @@ Everything is contained in a single `.zsh` file with no dependencies beyond
 
 ---
 
+## Contributing
+
+```sh
+git clone https://github.com/MattX23/wtf-terminal.git
+cd wtf-terminal
+```
+
+**Run the tests** (no API key required — all tests use mocked transports):
+```sh
+zsh tests/run.zsh
+```
+
+Output is [TAP-compatible](https://testanything.org). All 47 tests should pass.
+
+**Regenerate the demo gif** (requires [vhs](https://github.com/charmbracelet/vhs)):
+```sh
+vhs demo.tape
+```
+
+The recording uses `demo_env.zsh` — a scripted simulation of wtf's output — so no API key is needed to regenerate it either.
+
+---
+
 ## Companion tools
 
 wtf is part of a small collection of zsh terminal tools:
 
-- **[cmdwatch](../terminal-alias-suggester/)** — notices repeated mistyped
-  commands and offers to create aliases for them
+- **[cmdwatch](https://github.com/MattX23/CMD-Watch)** — notices repeated
+  mistyped commands and offers to create aliases for them
 
 Both tools share the same ⚡ personality and hook pattern, and can be sourced
 together in your `.zshrc`.
