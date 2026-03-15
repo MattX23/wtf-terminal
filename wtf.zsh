@@ -47,9 +47,11 @@ _wtf_preexec() {
     _wtf_capture_active=1
     _wtf_stderr_file=$(mktemp "${TMPDIR:-/tmp}/wtf_stderr.XXXXXX")
 
-    # Save current stderr fd, then redirect shell stderr through tee so output
-    # still appears on the terminal AND gets written to the temp file.
-    exec {_wtf_saved_stderr_fd}>&2 2> >(tee -- "$_wtf_stderr_file" >&${_wtf_saved_stderr_fd})
+    # Save current stderr to a new fd first, then redirect stderr through tee.
+    # Two separate exec calls — {_wtf_saved_stderr_fd} must be assigned before
+    # it can be referenced in the tee redirect.
+    exec {_wtf_saved_stderr_fd}>&2
+    exec 2> >(tee -- "$_wtf_stderr_file" >&${_wtf_saved_stderr_fd})
 }
 
 _wtf_precmd() {
@@ -233,9 +235,10 @@ wtf() {
     printf '\n  \e[1;33m⚡ wtf\e[0m  \e[2m%s\e[0m  \e[31m(exit %d)\e[0m\n\n' \
         "$_wtf_last_cmd" "$_wtf_last_exit"
 
-    # Response — streamed directly so output appears progressively
-    printf '  '
-    _wtf_send_to_claude "$prompt" | sed $'s/\n/\n  /g'
+    # Response — line-buffered so each line is indented; works on macOS BSD sed.
+    _wtf_send_to_claude "$prompt" | while IFS= read -r line; do
+        printf '  %s\n' "$line"
+    done
 
     printf '\n'
 }
