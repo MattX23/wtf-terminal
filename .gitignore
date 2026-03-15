@@ -2,3 +2,6 @@
 *.swp
 *.swo
 .idea
+
+# vhs intermediate files
+*.mp4

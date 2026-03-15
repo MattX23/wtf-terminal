@@ -2,6 +2,8 @@
 
 A zsh plugin that explains the last failed terminal command using Claude AI.
 
+![wtf demo](demo.gif)
+
 ```
 $ npm install
 npm error code ENOENT
