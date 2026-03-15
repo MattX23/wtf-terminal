@@ -122,6 +122,15 @@ Everything is contained in a single `.zsh` file with no dependencies beyond
 
 ---
 
+## Requirements
+
+- **zsh 5.3+** — anonymous fd syntax (`{fd}>&2`) used for stderr capture requires 5.3 or later. macOS ships with 5.9; check yours with `zsh --version`.
+- **macOS or Linux**
+- **curl** — for the API key transport path
+- **Claude Code CLI** (`claude`) — only needed for the Pro/no-key path
+
+---
+
 ## Companion tools
 
 wtf is part of a small collection of zsh terminal tools:
