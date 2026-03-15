@@ -60,7 +60,7 @@ wtf() {
     printf '  '
     case "$_wtf_last_cmd" in
         npm\ install*)
-            _demo_stream "There's no package.json in the current directory, so npm has nothing to install. Navigate to your project root with \`cd\`, or run \`npm init\` to create one."
+            _demo_stream "There's no package.json in the current directory, so npm has nothing to install. Run \`cd <your-project>\` to move into an existing project, or \`npm init\` to start a new one here."
             ;;
         git\ push*)
             _demo_stream "The local branch hasn't been pushed before, so git doesn't know where to send it. Run \`git push -u origin my-feature\` to set the upstream and push in one step."
