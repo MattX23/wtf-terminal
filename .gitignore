@@ -5,3 +5,4 @@
 
 # vhs intermediate files
 *.mp4
+package-lock.json
